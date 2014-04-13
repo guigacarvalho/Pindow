@@ -9,6 +9,7 @@
 #import "DefaultSettingsViewController.h"
 #import "BeaconViewController.h"
 #import <FYX/FYXTransmitter.h>
+#import <FYX/FYXVisitManager.h>
 
 @interface DefaultSettingsViewController (){
     BOOL    _detailViewInPresent;
@@ -29,8 +30,7 @@
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
-    [self.beaconImg setHidden:YES];
-    [self.beaconTitle setHidden:YES];
+
 
 }
 
@@ -39,15 +39,11 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_signout];
     
-    self.visitManager = [FYXVisitManager new];
-    self.visitManager.delegate = self;
-    [self.visitManager start];
-    
     if (![PFUser currentUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton;
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFSignUpFieldsSignUpButton;
         logInViewController.logInView.logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo.png"]];
         logInViewController.logInView.backgroundColor = [UIColor whiteColor];
         logInViewController.logInView.usernameField.textColor = [UIColor grayColor];
@@ -64,7 +60,9 @@
         [logInViewController setSignUpController:signUpViewController]; 
         
         // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
+        [self presentViewController:logInViewController animated:YES completion:^{
+            [self.signout setHidden:NO];
+        }];
     }
     
 }
@@ -90,12 +88,19 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.beaconImg setHidden:NO];
         [self.beaconTitle setHidden:NO];
+        
     });
 
-//    [self.]
-//    [self setView:beaconViewController];
     [self dismissViewControllerAnimated:YES completion:^{
         _didLogin = YES;
+        self.visitManager = [FYXVisitManager new];
+        self.visitManager.delegate = self;
+        NSMutableDictionary *options = [NSMutableDictionary new];
+        [options setObject:[NSNumber numberWithInt:5] forKey:FYXVisitOptionDepartureIntervalInSecondsKey];
+        [options setObject:[NSNumber numberWithInt:-35] forKey:FYXVisitOptionArrivalRSSIKey];
+        [options setObject:[NSNumber numberWithInt:-55] forKey:FYXVisitOptionDepartureRSSIKey];
+        [self.visitManager startWithOptions:options];
+
     }];
 }
 
@@ -182,6 +187,18 @@
 {
     // this will be invoked when an authorized transmitter is sighted for the first time
     NSLog(@"I arrived at a Gimbal Beacon!!! %@", visit.transmitter.name);
+    NSString *beaconURL = visit.transmitter.name;
+    NSLog(@"- %@", beaconURL);
+    if (!_detailViewInPresent&_didLogin) {
+        _detailViewInPresent = YES;
+        BeaconViewController *vc = [[BeaconViewController alloc]initWithNibName:nil bundle:nil];
+        [self presentViewController:vc animated:YES completion:^() {
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:beaconURL]];
+            vc.testLabel.image = [UIImage imageWithData:imageData];
+            [vc.beaconInfo setText:beaconURL];
+        }];
+        
+    }
 
     
 }
@@ -191,12 +208,6 @@
 //        NSLog(@"@%",[comments count]);
 //    }];
     // this will be invoked when an authorized transmitter is sighted during an on-going visit
-    NSLog(@"I received a sighting!!! %@", visit.transmitter.name);
-    if (!_detailViewInPresent&_didLogin) {
-        _detailViewInPresent = YES;
-        BeaconViewController *vc = [[BeaconViewController alloc]initWithNibName:nil bundle:nil];
-        [self presentViewController:vc animated:YES completion:nil];
-    }
 }
 - (void)didDepart:(FYXVisit *)visit;
 {
@@ -205,4 +216,7 @@
     NSLog(@"I was around the beacon for %f seconds", visit.dwellTime);
 }
 
+- (IBAction)loadBtn:(id)sender {
+    
+}
 @end

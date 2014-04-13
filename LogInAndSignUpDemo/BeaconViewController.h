@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BeaconViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *testLabel;
 - (IBAction)dismiss:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UILabel *beaconInfo;
 @end

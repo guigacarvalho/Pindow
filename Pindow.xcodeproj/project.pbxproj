@@ -56,9 +56,9 @@
 		798C721D18F9C92C00E9E0DC /* ContextLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798C721C18F9C92C00E9E0DC /* ContextLocation.framework */; };
 		798C721F18F9C93B00E9E0DC /* ContextCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798C721E18F9C93B00E9E0DC /* ContextCore.framework */; };
 		798C722118F9C94F00E9E0DC /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798C722018F9C94F00E9E0DC /* Common.framework */; };
-		798C722318F9EDF700E9E0DC /* DefaultSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 798C722218F9EDF700E9E0DC /* DefaultSettingsViewController.xib */; };
 		798C723118FA065500E9E0DC /* BeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798C723018FA065500E9E0DC /* BeaconViewController.m */; };
 		798C723318FA100800E9E0DC /* 09ef8053fbb97699ffb099a8ff365552.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 798C723218FA100800E9E0DC /* 09ef8053fbb97699ffb099a8ff365552.jpg */; };
+		79CEEE1118FA824200836057 /* DefaultSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79CEEE1018FA824200836057 /* DefaultSettingsViewController.xib */; };
 		C4BBB7B516FD2ABC003CA3F7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BBB7B316FD2ABC003CA3F7 /* CoreLocation.framework */; };
 		C4BBB7B616FD2ABC003CA3F7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BBB7B416FD2ABC003CA3F7 /* StoreKit.framework */; };
 		C4BBB7BA16FD2B0F003CA3F7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BBB7B716FD2B0F003CA3F7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -132,10 +132,10 @@
 		798C721C18F9C92C00E9E0DC /* ContextLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContextLocation.framework; path = ../../../Downloads/gimbalsdk_1.16.1_ios/Frameworks/ContextLocation.embeddedframework/ContextLocation.framework; sourceTree = "<group>"; };
 		798C721E18F9C93B00E9E0DC /* ContextCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContextCore.framework; path = ../../../Downloads/gimbalsdk_1.16.1_ios/Frameworks/ContextCore.embeddedframework/ContextCore.framework; sourceTree = "<group>"; };
 		798C722018F9C94F00E9E0DC /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Common.framework; path = ../../../Downloads/gimbalsdk_1.16.1_ios/Frameworks/Common.embeddedframework/Common.framework; sourceTree = "<group>"; };
-		798C722218F9EDF700E9E0DC /* DefaultSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DefaultSettingsViewController.xib; path = ../../../../.Trash/DefaultSettingsViewController.xib; sourceTree = "<group>"; };
 		798C722F18FA065500E9E0DC /* BeaconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconViewController.h; sourceTree = "<group>"; };
 		798C723018FA065500E9E0DC /* BeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconViewController.m; sourceTree = "<group>"; };
 		798C723218FA100800E9E0DC /* 09ef8053fbb97699ffb099a8ff365552.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 09ef8053fbb97699ffb099a8ff365552.jpg; path = ../../../../Downloads/09ef8053fbb97699ffb099a8ff365552.jpg; sourceTree = "<group>"; };
+		79CEEE1018FA824200836057 /* DefaultSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultSettingsViewController.xib; sourceTree = "<group>"; };
 		C4BBB7B316FD2ABC003CA3F7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C4BBB7B416FD2ABC003CA3F7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C4BBB7B716FD2B0F003CA3F7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -300,7 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				74366EE4158AC82C00A17D8A /* DefaultSettingsViewController.h */,
-				798C722218F9EDF700E9E0DC /* DefaultSettingsViewController.xib */,
+				79CEEE1018FA824200836057 /* DefaultSettingsViewController.xib */,
 				74366EE5158AC82C00A17D8A /* DefaultSettingsViewController.m */,
 				798C722F18FA065500E9E0DC /* BeaconViewController.h */,
 				798C723018FA065500E9E0DC /* BeaconViewController.m */,
@@ -393,7 +393,6 @@
 				747F007715951A58000F601E /* ExitDown.png in Resources */,
 				747F007815951A58000F601E /* Facebook.png in Resources */,
 				795887AC18FA2A51006C9DE5 /* BeaconViewController.xib in Resources */,
-				798C722318F9EDF700E9E0DC /* DefaultSettingsViewController.xib in Resources */,
 				747F007915951A58000F601E /* FacebookDown.png in Resources */,
 				747F007A15951A58000F601E /* LoginFieldBG.png in Resources */,
 				747F007B15951A58000F601E /* Logo.png in Resources */,
@@ -402,6 +401,7 @@
 				747F007E15951A58000F601E /* SignUpDown.png in Resources */,
 				795887A718FA248E006C9DE5 /* comments.png in Resources */,
 				747F007F15951A58000F601E /* SignUpFieldBG.png in Resources */,
+				79CEEE1118FA824200836057 /* DefaultSettingsViewController.xib in Resources */,
 				747F008015951A58000F601E /* Twitter.png in Resources */,
 				747F008115951A58000F601E /* TwitterDown.png in Resources */,
 				C4BBB7C216FD2D73003CA3F7 /* Default@2x.png in Resources */,

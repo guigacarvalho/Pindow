@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 Parse. All rights reserved.
 //
 #import <FYX/FYXVisitManager.h>
-#import <Pinterest/Pinterest.h>
 
 
 @interface DefaultSettingsViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
+- (IBAction)loadBtn:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *beaconTitle;
+@property (weak, nonatomic) IBOutlet UIView *hidingPane;
 @property (weak, nonatomic) IBOutlet UIButton *signout;
 @property (nonatomic, strong) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *beaconImg;
-@property (weak, nonatomic) IBOutlet UILabel *beaconTitle;
 @property (nonatomic, strong) UIImageView *img;
 - (IBAction)logOutButtonTapAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *description;
