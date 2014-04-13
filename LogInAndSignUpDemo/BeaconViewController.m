@@ -7,9 +7,19 @@
 //
 
 #import "BeaconViewController.h"
+#import <Pinterest/Pinterest.h>
 
-@interface BeaconViewController ()
 
+#define kMargin             20.0
+#define kSampleImageWidth   320.0
+#define kSampleImageHeight  200.0
+
+#define kPinItButtonWidth   72.0
+#define kPinItButtonHeight  32.0
+
+@interface BeaconViewController (){
+    Pinterest*  _pinterest;
+}
 @end
 
 @implementation BeaconViewController
@@ -27,6 +37,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // Setup PinIt Button
+    _pinterest = [[Pinterest alloc] initWithClientId:@"1234" urlSchemeSuffix:@"prod"];
+
+    UIButton* pinItButton = [Pinterest pinItButton];
+    [pinItButton setFrame:CGRectMake(20,
+                                     10,
+                                     kPinItButtonWidth,
+                                     kPinItButtonHeight)];
+    [pinItButton addTarget:self
+                    action:@selector(pinIt:)
+          forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pinItButton];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,6 +71,16 @@
 
 
 - (IBAction)dismiss:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.delegate respondsToSelector:@selector(didDismissVC:)]) {
+            [self.delegate didDismissVC:self];
+        }
+    }];
+}
+- (void)pinIt:(id)sender
+{
+    [_pinterest createPinWithImageURL:[NSURL URLWithString:@"http://placekitten.com/500/400"]
+                            sourceURL:[NSURL URLWithString:@"http://placekitten.com"]
+                          description:@"Pinning from Pin It Demo"];
 }
 @end

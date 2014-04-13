@@ -8,15 +8,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DefaultSettingsViewController">
             <connections>
                 <outlet property="beaconImg" destination="9ye-xu-G0X" id="KW0-eJ-nVz"/>
-                <outlet property="description" destination="gHg-Qc-tXg" id="eNz-1w-EHY"/>
                 <outlet property="signout" destination="4" id="tWc-pZ-g8Y"/>
                 <outlet property="view" destination="1" id="3"/>
-                <outlet property="welcomeLabel" destination="Vlt-I4-hc3" id="p7n-nV-dGX"/>
+                <outlet property="welcomeLabel" destination="YwT-Bn-Vnc" id="WgZ-IG-GI4"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="508"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Maison Jules Printed A-Line Dress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4bp-20-IqB">
@@ -38,61 +37,21 @@
                         <action selector="logOutButtonTapAction:" destination="-1" eventType="touchUpInside" id="5"/>
                     </connections>
                 </button>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="09ef8053fbb97699ffb099a8ff365552.jpg" id="9ye-xu-G0X">
-                    <rect key="frame" x="0.0" y="85" width="320" height="201"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1.png" id="9ye-xu-G0X">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gHg-Qc-tXg">
-                    <rect key="frame" x="10" y="342" width="269" height="82"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">A leopard print adds a colorful pop to this Maison Jules A-line dress for chic feminine daytime style!
-Polyester
-Machine washable
-Imported
-Sleeveless
-Solid point collar
-Leopard print through top
-Front button closures
-Elastic waistband
-Solid A-line skirt
-Pockets at the hip
-Hits at mid thigh
-Maison Jules available for US orders only.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desc.png" id="COO-M1-RtX">
-                    <rect key="frame" x="279" y="346" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link.png" id="AAu-2o-TTm">
-                    <rect key="frame" x="279" y="302" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin.png" id="mhX-0x-8qD">
-                    <rect key="frame" x="239" y="302" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comments.png" id="4sb-YK-4wQ">
-                    <rect key="frame" x="279" y="422" width="32" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Maison Jules Printed A-Line Dress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Vlt-I4-hc3">
-                    <rect key="frame" x="10" y="462" width="290" height="36"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Maison Jules Printed A-Line Dress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="YwT-Bn-Vnc">
+                    <rect key="frame" x="10" y="480" width="290" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
         </view>
     </objects>
     <resources>
-        <image name="09ef8053fbb97699ffb099a8ff365552.jpg" width="488" height="321"/>
-        <image name="comments.png" width="32" height="32"/>
-        <image name="desc.png" width="32" height="32"/>
-        <image name="link.png" width="32" height="32"/>
-        <image name="pin.png" width="32" height="32"/>
+        <image name="bg1.png" width="640" height="1136"/>
     </resources>
 </document>

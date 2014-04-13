@@ -14,6 +14,8 @@
 @interface DefaultSettingsViewController (){
     BOOL    _detailViewInPresent;
     BOOL    _didLogin;
+    
+    BeaconViewController *_BeaconVC;
 }
 
 @end
@@ -26,7 +28,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([PFUser currentUser]) {
-        self.welcomeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];
+        self.welcomeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@! Locating offers...", nil), [[PFUser currentUser] username]];
+        [self.signout setHidden:NO];
+        [self setTitle:@"Pindow"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.beaconImg setHidden:NO];
+            [self.beaconTitle setHidden:NO];
+        });
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
@@ -50,6 +58,13 @@
         logInViewController.logInView.passwordField.textColor = [UIColor grayColor];
         logInViewController.navigationController.navigationBarHidden = YES;
         
+        [self.signout setHidden:NO];
+        [self setTitle:@"Pindow"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.beaconImg setHidden:NO];
+            [self.beaconTitle setHidden:NO];
+            
+        });
 
         
         // Create the sign up view controller
@@ -62,6 +77,13 @@
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:^{
             [self.signout setHidden:NO];
+            [self setTitle:@"Pindow"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.beaconImg setHidden:NO];
+                [self.beaconTitle setHidden:NO];
+                
+            });
+
         }];
     }
     
@@ -84,23 +106,16 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     BeaconViewController *beaconViewController = [[BeaconViewController alloc] init];
-    [self setTitle:@"Pindow"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.beaconImg setHidden:NO];
-        [self.beaconTitle setHidden:NO];
-        
-    });
 
     [self dismissViewControllerAnimated:YES completion:^{
         _didLogin = YES;
         self.visitManager = [FYXVisitManager new];
         self.visitManager.delegate = self;
         NSMutableDictionary *options = [NSMutableDictionary new];
-        [options setObject:[NSNumber numberWithInt:5] forKey:FYXVisitOptionDepartureIntervalInSecondsKey];
-        [options setObject:[NSNumber numberWithInt:-35] forKey:FYXVisitOptionArrivalRSSIKey];
-        [options setObject:[NSNumber numberWithInt:-55] forKey:FYXVisitOptionDepartureRSSIKey];
+        [options setObject:[NSNumber numberWithInt:1] forKey:FYXVisitOptionDepartureIntervalInSecondsKey];
+        [options setObject:[NSNumber numberWithInt:-45] forKey:FYXVisitOptionArrivalRSSIKey];
+        [options setObject:[NSNumber numberWithInt:-65] forKey:FYXVisitOptionDepartureRSSIKey];
         [self.visitManager startWithOptions:options];
-
     }];
 }
 
@@ -183,22 +198,64 @@
     return YES;
 }
 
+- (void)didDismissVC:(id)sender
+{
+    _detailViewInPresent = NO;
+    _BeaconVC = nil;
+}
+
 - (void)didArrive:(FYXVisit *)visit;
 {
     // this will be invoked when an authorized transmitter is sighted for the first time
     NSLog(@"I arrived at a Gimbal Beacon!!! %@", visit.transmitter.name);
+
     NSString *beaconURL = visit.transmitter.name;
-    NSLog(@"- %@", beaconURL);
-    if (!_detailViewInPresent&_didLogin) {
-        _detailViewInPresent = YES;
-        BeaconViewController *vc = [[BeaconViewController alloc]initWithNibName:nil bundle:nil];
-        [self presentViewController:vc animated:YES completion:^() {
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:beaconURL]];
-            vc.testLabel.image = [UIImage imageWithData:imageData];
-            [vc.beaconInfo setText:beaconURL];
-        }];
-        
+    __block NSMutableString *price = [[NSMutableString alloc] init];
+    __block NSMutableString *title = [[NSMutableString alloc] init];
+    __block NSMutableString *desc = [[NSMutableString alloc] init];
+    __block NSMutableString *url = [[NSMutableString alloc] init];
+//    NSString *title;
+//    NSString *desc;
+//    NSString *url;
+
+    if (!_BeaconVC) {
+        _BeaconVC = [[BeaconViewController alloc]initWithNibName:nil bundle:nil];
+        _BeaconVC.delegate = self;
     }
+    
+    if (_didLogin && !_detailViewInPresent) {
+                _detailViewInPresent = YES;
+        
+        [self presentViewController:_BeaconVC animated:YES completion:^() {
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:beaconURL]];
+            _BeaconVC.testLabel.image = [UIImage imageWithData:imageData];
+        }];
+    }
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Beacon"];
+    [query whereKey:@"beaconId" equalTo:beaconURL];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objectss, NSError *error) {
+        if (!error) {
+//            NSLog(@"%@",objectss[0][@"price"]);
+            [price stringByAppendingString:objectss[0][@"price"]];
+            [title stringByAppendingString:objectss[0][@"title"]];
+            [url stringByAppendingString:objectss[0][@"descUrl"]];
+            [desc stringByAppendingString:objectss[0][@"desc"]];
+//            NSLog(@"%@",price);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_BeaconVC.itemPrice setText:objectss[0][@"price"]];
+                [_BeaconVC.itemTitle setText:objectss[0][@"title"]];
+                [_BeaconVC.itemDesc setText:objectss[0][@"desc"]];
+//                [_BeaconVC.itemPrice setText:objectss[0][@"price"]];
+            });
+
+            
+        }
+    }];
+
+    
+    
 
     
 }

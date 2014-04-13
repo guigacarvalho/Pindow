@@ -42,6 +42,9 @@
 		747F007F15951A58000F601E /* SignUpFieldBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 747F007315951A58000F601E /* SignUpFieldBG.png */; };
 		747F008015951A58000F601E /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 747F007415951A58000F601E /* Twitter.png */; };
 		747F008115951A58000F601E /* TwitterDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 747F007515951A58000F601E /* TwitterDown.png */; };
+		7942E5DE18FAF44E004B4193 /* Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7942E5DD18FAF44E004B4193 /* Bg.png */; };
+		7942E5E018FAF615004B4193 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7942E5DF18FAF615004B4193 /* bg1.png */; };
+		7942E5E218FB077F004B4193 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7942E5E118FB077F004B4193 /* Pinterest.framework */; };
 		795887A718FA248E006C9DE5 /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 795887A318FA248E006C9DE5 /* comments.png */; };
 		795887A818FA248E006C9DE5 /* desc.png in Resources */ = {isa = PBXBuildFile; fileRef = 795887A418FA248E006C9DE5 /* desc.png */; };
 		795887A918FA248E006C9DE5 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 795887A518FA248E006C9DE5 /* link.png */; };
@@ -118,6 +121,9 @@
 		747F007315951A58000F601E /* SignUpFieldBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignUpFieldBG.png; sourceTree = "<group>"; };
 		747F007415951A58000F601E /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
 		747F007515951A58000F601E /* TwitterDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterDown.png; sourceTree = "<group>"; };
+		7942E5DD18FAF44E004B4193 /* Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bg.png; sourceTree = "<group>"; };
+		7942E5DF18FAF615004B4193 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
+		7942E5E118FB077F004B4193 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pinterest.framework; path = "../../../Downloads/PinItSDKiOS 2/Pinterest.embeddedframework/Pinterest.framework"; sourceTree = "<group>"; };
 		795887A318FA248E006C9DE5 /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = SOURCE_ROOT; };
 		795887A418FA248E006C9DE5 /* desc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = desc.png; sourceTree = SOURCE_ROOT; };
 		795887A518FA248E006C9DE5 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = SOURCE_ROOT; };
@@ -154,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7942E5E218FB077F004B4193 /* Pinterest.framework in Frameworks */,
 				795887AE18FA2F39006C9DE5 /* Pinterest.framework in Frameworks */,
 				798C722118F9C94F00E9E0DC /* Common.framework in Frameworks */,
 				798C721F18F9C93B00E9E0DC /* ContextCore.framework in Frameworks */,
@@ -193,7 +200,9 @@
 				C4FD613517286AC800F61563 /* Icon.png */,
 				C4FD613717286ACD00F61563 /* Icon@2x.png */,
 				C4BBB7C016FD2D73003CA3F7 /* Default.png */,
+				7942E5DD18FAF44E004B4193 /* Bg.png */,
 				C4BBB7BF16FD2D73003CA3F7 /* Default@2x.png */,
+				7942E5DF18FAF615004B4193 /* bg1.png */,
 				C4BBB7C116FD2D73003CA3F7 /* Default-568h@2x.png */,
 				798C723218FA100800E9E0DC /* 09ef8053fbb97699ffb099a8ff365552.jpg */,
 				747F006A15951A58000F601E /* Exit.png */,
@@ -239,6 +248,7 @@
 		74366EA5158AAE0F00A17D8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7942E5E118FB077F004B4193 /* Pinterest.framework */,
 				795887AD18FA2F39006C9DE5 /* Pinterest.framework */,
 				798C722018F9C94F00E9E0DC /* Common.framework */,
 				798C721E18F9C93B00E9E0DC /* ContextCore.framework */,
@@ -384,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				798C723318FA100800E9E0DC /* 09ef8053fbb97699ffb099a8ff365552.jpg in Resources */,
+				7942E5E018FAF615004B4193 /* bg1.png in Resources */,
 				795887A918FA248E006C9DE5 /* link.png in Resources */,
 				74366EB1158AAE1000A17D8A /* InfoPlist.strings in Resources */,
 				795887A818FA248E006C9DE5 /* desc.png in Resources */,
@@ -405,6 +416,7 @@
 				747F008015951A58000F601E /* Twitter.png in Resources */,
 				747F008115951A58000F601E /* TwitterDown.png in Resources */,
 				C4BBB7C216FD2D73003CA3F7 /* Default@2x.png in Resources */,
+				7942E5DE18FAF44E004B4193 /* Bg.png in Resources */,
 				C4BBB7C316FD2D73003CA3F7 /* Default.png in Resources */,
 				C4BBB7C416FD2D73003CA3F7 /* Default-568h@2x.png in Resources */,
 				C4FD613617286AC800F61563 /* Icon.png in Resources */,
@@ -521,6 +533,8 @@
 					/Users/guilherme/Downloads/gimbalsdk_1.16.1_ios/Frameworks/ContextCore.embeddedframework,
 					/Users/guilherme/Downloads/gimbalsdk_1.16.1_ios/Frameworks/Common.embeddedframework,
 					/Users/guilherme/Downloads/PinItSDKiOS/Pinterest.embeddedframework,
+					/Users/guilherme/Downloads/PinItSDKiOS,
+					2/Pinterest.embeddedframework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LogInAndSignUpDemo/Pindow-Prefix.pch";
@@ -547,6 +561,8 @@
 					/Users/guilherme/Downloads/gimbalsdk_1.16.1_ios/Frameworks/ContextCore.embeddedframework,
 					/Users/guilherme/Downloads/gimbalsdk_1.16.1_ios/Frameworks/Common.embeddedframework,
 					/Users/guilherme/Downloads/PinItSDKiOS/Pinterest.embeddedframework,
+					/Users/guilherme/Downloads/PinItSDKiOS,
+					2/Pinterest.embeddedframework,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LogInAndSignUpDemo/Pindow-Prefix.pch";
